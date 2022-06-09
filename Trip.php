@@ -73,13 +73,17 @@ class Trip
     public function distance(): float
     {
         $this->sortCoordinates();
+        
         $distance = 0;
+        
         while ($current_coordinate = current($this->coordinates)) {
             if (!$next_coordinate = next($this->coordinates)) {
                 break;
             }
+            
             $distance = $distance + $current_coordinate->distanceFrom($next_coordinate);
         }
+        
         return $distance;
     }
     
